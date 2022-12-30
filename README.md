@@ -25,9 +25,13 @@ This project will used a Convolutional Neural Network (CNN) which is a deep lear
 #### Data Augmentation
 Minor data augmentation was performed on the training images by performing a random horizontal flip along with resizing and cropping.  No augmentation was performed on the validation and test images, only resizing andf cropping.
 
+#### Train-Validation-Test Split
+The data was split into train, validation, and test sets using an 80/10/10 split, respectively.  
+
+![](https://github.com/emoreno-hub/Inventory_Monitoring_Project/blob/main/screenshots/Dataset_image_distribution.png)
 
 #### Hyperparameter Tuning
-The data was split into train, validation, and test sets using an 80/10/10 split, respectively.  Instead of relying on specified hyperparameters, hyperparameter tuning was performed to across the below search space.  There seems to be a consensus among many that low batch sizes perform better than large batch sizes, which is why I opted for batch sizes of 32 and 64.
+Instead of relying on specified hyperparameters, hyperparameter tuning was performed to across the below search space.  There seems to be a consensus among many that low batch sizes perform better than large batch sizes, which is why I opted for batch sizes of 32 and 64.
 
 In order to speed up training, `max_jobs` was set to 4 and `max_parallel_jobs` was set to 2.
 
@@ -41,15 +45,19 @@ hyperparameter_ranges = {
 
 ![](https://github.com/emoreno-hub/Inventory_Monitoring_Project/blob/main/screenshots/Training_jobs.PNG)
 
+
 After hyperparameter tuning concluded, the optimal hyperparameters found were:
+
 ```
 {'batch_size': 32, 'lr': 0.003309487406915597, 'epochs': 12}
 ```
 
-An estimator was then created using these hyperparameters using `ml.g4dn.xlarge` for the instance type.
+A moodel was then trained using these hyperparameters using `ml.g4dn.xlarge` for the instance type.
 
 #### Model Evaluation
 Unfortunately, despite using a pre-trained ResNet50 model and hyperparameter tuning, accuracy for this model was only 11.8%.  This is significantly lower than the benchmark of 55.67%.  It could be the case that I added too many fully connected layers at the end of the model, which I will explore down the road.
+
+![](https://github.com/emoreno-hub/Inventory_Monitoring_Project/blob/main/screenshots/Model_performance.PNG)
 
 ## Machine Learning Pipeline
 The AWS machine learning pipeline used for this project is as follows:
