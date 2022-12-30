@@ -17,7 +17,6 @@ The dataset used for this project will be the Amazon Bin Image Dataset, which co
 Running the `sagemaker.ipynb` notebook will allow you to download a subset of data.  The subset is controlled by the file titled `file_list.json` and reuslts in 10,441 images being downloaded for this project.
 
 ## Model Training
-**TODO**: What kind of model did you choose for this experiment and why? Give an overview of the types of hyperparameters that you specified and why you chose them. Also remember to evaluate the performance of your model.
 
 #### CNN Model
 This project will used a Convolutional Neural Network (CNN) which is a deep learning algorithm that can take in an input image, assign importance (learnable weights and biases) to various aspects / objects in the image, and be able to differentiate one from the other.  A pre-trained ResNet50 model was used to build the CNN model with a fully connected layer added to the end of the model followed by a ReLu activation function, then another Linear layer, and a final ReLu activation function.
@@ -30,6 +29,8 @@ Minor data augmentation was performed on the training images by performing a ran
 #### Hyperparameter Tuning
 The data was split into train, validation, and test sets using an 80/10/10 split, respectively.  Instead of relying on specified hyperparameters, hyperparameter tuning was performed to across the below search space.  There seems to be a consensus among many that low batch sizes perform better than large batch sizes, which is why I opted for batch sizes of 32 and 64.
 
+In order to speed up training, `max_jobs` was set to 4 and `max_parallel_jobs` was set to 2.
+
 ```
 hyperparameter_ranges = {
     "lr": ContinuousParameter(0.001, 0.1),
@@ -37,6 +38,8 @@ hyperparameter_ranges = {
     "epochs": CategoricalParameter([8,12,15])
 }
 ```
+
+![](https://github.com/emoreno-hub/Inventory_Monitoring_Project/blob/main/screenshots/Training_jobs.PNG)
 
 After hyperparameter tuning concluded, the optimal hyperparameters found were:
 ```
