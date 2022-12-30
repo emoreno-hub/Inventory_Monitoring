@@ -23,7 +23,7 @@ This project will used a Convolutional Neural Network (CNN) which is a deep lear
 
 
 #### Data Augmentation
-Minor data augmentation was performed on the training images by performing a random horizontal flip along with resizing and cropping.  No augmentation was performed on the validation and test images, only resizing andf cropping.
+Minor data augmentation was performed on the training images by performing a random horizontal flip along with resizing and cropping.  No augmentation was performed on the validation and test images, only resizing and cropping.
 
 #### Train-Validation-Test Split
 The data was split into train, validation, and test sets using an 80/10/10 split, respectively.  
