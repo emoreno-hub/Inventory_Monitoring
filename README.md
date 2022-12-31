@@ -28,7 +28,7 @@ def net():
     model = models.resnet50(pretrained=True) # instantiate pretrained resnet50 model
     
     for param in model.parameters():
-        param.requires_grad = False # freeze the convolutional layers of the pretrained layers by setting to false
+        param.requires_grad = False # freeze the pretrained convolutional layers
     
     # find the number of features present in the pretrained model
     num_features = model.fc.in_features
