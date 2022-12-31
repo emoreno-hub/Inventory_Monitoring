@@ -21,10 +21,10 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 logger.addHandler(logging.StreamHandler(sys.stdout))
 
-def test(model, test_loader, criterion, device, hook):
+def test(model, test_loader, criterion, device):
     logger.info(f'Start Testing')
     model.eval()
-    hook.set_mode(smd.modes.EVAL) # add hook for testing
+
     running_loss=0
     running_corrects=0
     
@@ -44,12 +44,11 @@ def test(model, test_loader, criterion, device, hook):
         logger.info(f"Testing Loss: {total_loss}")
         logger.info(f"Testing Accuracy: {total_acc}")
 
-def train(model, train_loader, validation_loader, criterion, epochs, optimizer, device, hook):
+def train(model, train_loader, validation_loader, criterion, epochs, optimizer, device):
     # set model to train
     model.train()
     # start logging
     logger.info("Start Training")
-    hook.set_mode(smd.modes.TRAIN) # add hook for training
     
     best_loss=1e6
     image_dataset={'train':train_loader, 'valid':validation_loader}
@@ -59,12 +58,8 @@ def train(model, train_loader, validation_loader, criterion, epochs, optimizer, 
             print(f"Epoch {epoch}, Phase {phase}")
             if phase=='train':
                 model.train()
-                hook.set_mode(smd.modes.TRAIN)
-                
             else:
                 model.eval()
-                hook.set_mode(smd.modes.EVAL)
-                
             running_loss = 0.0
             running_corrects = 0
             
@@ -140,9 +135,8 @@ def create_data_loaders(train_path, test_path, valid_path, batch_size):
     train_loader = torch.utils.data.DataLoader(trainset, batch_size=batch_size, shuffle=True)
     
     testset = torchvision.datasets.ImageFolder(root=test_path, transform=testing_transform)
-    test_loader = torch.utils.data.DataLoader(testset, batch_size=batch_size )
+    test_loader = torch.utils.data.DataLoader(testset, batch_size=batch_size)
     
-    # no transformation on validation set
     validset = torchvision.datasets.ImageFolder(root=valid_path, transform=testing_transform)
     valid_loader = torch.utils.data.DataLoader(validset, batch_size=batch_size) 
 
@@ -166,22 +160,15 @@ def main(args):
     loss_function = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.fc.parameters(), lr=args.lr)
     
-    # create hook and register the model and loss function
-    hook = smd.Hook.create_from_json_file()
-    hook.register_module(model)
-    hook.register_loss(loss_function)
-    
     # get training and test loaders
     train_loader, test_loader, validation_loader = create_data_loaders(args.train_data, args.test_data, args.valid_data, args.batch_size )
 
         
     logger.info(f"Begin Training")
-    # pass debugger hook to the train function
-    model=train(model, train_loader, validation_loader, loss_function, args.epochs, optimizer, device, hook)
+    model=train(model, train_loader, validation_loader, loss_function, args.epochs, optimizer, device)
 
     logger.info(f"Begin Testing")
-    # pass debugger hook to the train function
-    test(model, test_loader, loss_function, device, hook)
+    test(model, test_loader, loss_function, device)
     
     # Save the trained model and capture in logging
     logger.info("Saving The Model")

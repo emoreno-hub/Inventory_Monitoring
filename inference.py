@@ -25,10 +25,13 @@ def net():
 
     num_features=model.fc.in_features
 
-    model.fc = nn.Sequential(
-                   nn.Linear(num_features, 256),
-                   nn.ReLU(inplace=True),
-                   nn.Linear(256, 5)) # set to 5 since there are 5 classes
+    model.fc = nn.Sequential( nn.Linear(num_features, 512),
+                             nn.BatchNorm1d(512),
+                             nn.Dropout(0.2),
+                             nn.Linear(512, 256),
+                             nn.ReLU(inplace = True),
+                             nn.Linear(256, 5), # set to 5 classes
+                            )
     return model
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
