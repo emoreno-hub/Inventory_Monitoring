@@ -5,7 +5,7 @@ In this project we use a Convolutional Neural Network that relies on a pre-train
 ## Project Set Up and Installation
 - Create a SageMaker domain
 - Open SageMaker Studio and select an instance type (ml.t3.medium will do)
-- Clonse this repository
+- Clone this repository
 - Run `sagemaker.ipnyb`
 
 ## Dataset
@@ -19,7 +19,7 @@ Running the `sagemaker.ipynb` notebook will allow you to download a subset of da
 ## Model Training
 
 #### CNN Model
-This project will used a Convolutional Neural Network (CNN) which is a deep learning algorithm that can take in an input image, assign importance (learnable weights and biases) to various aspects / objects in the image, and be able to differentiate one from the other.  A pre-trained ResNet50 model was used to build the CNN model with a fully connected layer added to the end of the model followed by a ReLu activation function, then another Linear layer, and a final ReLu activation function.
+This project will use a Convolutional Neural Network (CNN) which is a deep learning algorithm that can take in an input image, assign importance (learnable weights and biases) to various aspects / objects in the image, and be able to differentiate one from the other.  A pre-trained ResNet50 model was used to build the CNN model with a fully connected layer added to the end of the model followed by a ReLu activation function, then another Linear layer, and a final ReLu activation function.
 
 Batch normalization is a technique for training very deep neural networks that normalizes the contributions to a layer for every mini-batch. This has the impact of settling the learning process and drastically decreasing the number of training epochs required to train deep neural networks, which is why it was included.
 
