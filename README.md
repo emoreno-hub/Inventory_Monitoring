@@ -149,3 +149,5 @@ The AWS machine learning pipeline used for this project is as follows:
 After the model was trained, a PyTorch estimator was deployed to an endpoint using `ml.m5.large` for the instance type and predictions were made using sample test images.
 
 ![](https://github.com/emoreno-hub/Inventory_Monitoring_Project/blob/main/screenshots/Prediction.PNG)
+
+![](https://github.com/emoreno-hub/Inventory_Monitoring_Project/blob/main/screenshots/Endpoint.PNG)
