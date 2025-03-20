@@ -1,6 +1,4 @@
 # Inventory Monitoring at Distribution Centers
-# Inventory Monitoring at Distribution Centers
-
 Efficient inventory management is crucial for optimizing supply chain operations, whether for small businesses or large-scale enterprises. This project leverages **Convolutional Neural Networks (CNNs)**, specifically a **pre-trained ResNet50 model**, to automate the counting of objects in distribution center bins. These bins, which carry products throughout warehouse operations, require accurate inventory tracking to ensure seamless supply chain management.
 
 Maintaining precise inventory levels is essential for balancing **supply and demand**. Overstocking ties up capital and increases storage costs, while understocking risks unfulfilled customer orders and lost revenue. By integrating **artificial intelligence (AI) into inventory monitoring**, this project aims to enhance accuracy, reduce manual labor, and improve overall efficiency in warehouse management.
