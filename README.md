@@ -1,5 +1,10 @@
 # Inventory Monitoring at Distribution Centers
-In this project we use a Convolutional Neural Network that relies on a pre-trained ResNet50 model to count the number of objects in each bin containing varying quantities of products.  These bins are commonly used within distribution centers to carry product throughout the operation.  The goal with ensuring accurate counting of items in bins is to improve inventory management.  Regardless of a company’s supply chain being large or small, inventory management is vital to a company’s health because it balances supply with demand by ensuring that product is available at the right time by tracking product up and down the supply chain.  Too much stock costs money and reduces cash flow and too little stock could lead to unfilled customer orders and lost sales.
+# Inventory Monitoring at Distribution Centers
+
+Efficient inventory management is crucial for optimizing supply chain operations, whether for small businesses or large-scale enterprises. This project leverages **Convolutional Neural Networks (CNNs)**, specifically a **pre-trained ResNet50 model**, to automate the counting of objects in distribution center bins. These bins, which carry products throughout warehouse operations, require accurate inventory tracking to ensure seamless supply chain management.
+
+Maintaining precise inventory levels is essential for balancing **supply and demand**. Overstocking ties up capital and increases storage costs, while understocking risks unfulfilled customer orders and lost revenue. By integrating **artificial intelligence (AI) into inventory monitoring**, this project aims to enhance accuracy, reduce manual labor, and improve overall efficiency in warehouse management.
+
 
 
 ## Project Set Up and Installation
@@ -11,15 +16,15 @@ In this project we use a Convolutional Neural Network that relies on a pre-train
 ## Methodology
 This section outlines the workflow for the project, from data preparation to model deployment.
 
-### **1. Data Preparation**
+#### **1. Data Preparation**
 - Download data and store it in an **S3 bucket**.
 - Split training data into **train, test, and validation** sets.
 
-### **2. Exploratory Data Analysis (EDA)**
+#### **2. Exploratory Data Analysis (EDA)**
 - Explore the **distribution of classes** in the dataset.
 - Identify and address any **class imbalance**.
 
-### **3. Model Training**
+#### **3. Model Training**
 - Develop a training script for **data pre-processing** and **hyperparameter tuning**.
 - Load a **pre-trained ResNet50 model** as the base architecture.
 - Perform **data augmentation** on the training set.
@@ -28,12 +33,12 @@ This section outlines the workflow for the project, from data preparation to mod
   - **Batch size**
 - Set up a **training estimator** for model training.
 
-### **4. Model Evaluation**
+#### **4. Model Evaluation**
 - Evaluate model performance using:
   - **Accuracy**
   - **Root Mean Squared Error (RMSE)**
 
-### **5. Deployment**
+#### **5. Deployment**
 - Deploy the trained model to an **endpoint**.
 - Create a **Lambda function** that connects to the endpoint and makes inferences using a test image.
 
@@ -43,7 +48,7 @@ This methodology ensures a structured approach to data processing, model trainin
 ## Dataset
 
 ### Overview
-The dataset used for this project will be the Amazon Bin Image Dataset, which consists of 500,000 images of bins containing one or more objects from Amazon Fulfillment Centers.  Each image is in JPEG format and contains corresponding JSON metadata files which describe the items in each bins.  
+The dataset used for this project will be the [Amazon Bin Image Dataset](https://registry.opendata.aws/amazon-bin-imagery/), which consists of 500,000 images of bins containing one or more objects from Amazon Fulfillment Centers.  Each image is in JPEG format and contains corresponding JSON metadata files which describe the items in each bins.  
 
 ### Access
 Running the `sagemaker.ipynb` notebook will allow you to download a subset of data.  The subset is controlled by the file titled `file_list.json` and reuslts in 10,441 images being downloaded for this project.
