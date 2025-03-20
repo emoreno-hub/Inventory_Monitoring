@@ -4,7 +4,6 @@ Efficient inventory management is crucial for optimizing supply chain operations
 Maintaining precise inventory levels is essential for balancing **supply and demand**. Overstocking ties up capital and increases storage costs, while understocking risks unfulfilled customer orders and lost revenue. By integrating **artificial intelligence (AI) into inventory monitoring**, this project aims to enhance accuracy, reduce manual labor, and improve overall efficiency in warehouse management.
 
 
-
 ## Project Set Up and Installation
 - Create a SageMaker domain
 - Open SageMaker Studio and select an instance type (ml.t3.medium will do)
@@ -40,11 +39,8 @@ This section outlines the workflow for the project, from data preparation to mod
 - Deploy the trained model to an **endpoint**.
 - Create a **Lambda function** that connects to the endpoint and makes inferences using a test image.
 
-This methodology ensures a structured approach to data processing, model training, and deployment.
-
 
 ## Dataset
-
 ### Overview
 The dataset used for this project will be the [Amazon Bin Image Dataset](https://registry.opendata.aws/amazon-bin-imagery/), which consists of 500,000 images of bins containing one or more objects from Amazon Fulfillment Centers.  Each image is in JPEG format and contains corresponding JSON metadata files which describe the items in each bins.  
 
@@ -142,16 +138,9 @@ By instantiating a pre-trained ResNet50 model with the optimal parameters found 
 
 ![](https://github.com/emoreno-hub/Inventory_Monitoring_Project/blob/main/screenshots/Model_performance.PNG)
 
-## Machine Learning Pipeline
-The AWS machine learning pipeline used for this project is as follows:
-- Data collection
-- Data preprocessing
-- Hyperparameter tuning
-- Model evaluation
-- Model deployment
 
 ## Model Deployment
-After the model was trained, a PyTorch estimator was deployed to an endpoint using `ml.m5.large` for the instance type and predictions were made using sample test images.
+After the model was trained, a PyTorch estimator was deployed using an instance size of `ml.m5.large` and the script `inference.py` to setup and deploy the endpoint.
 
 ![](https://github.com/emoreno-hub/Inventory_Monitoring_Project/blob/main/screenshots/Prediction.PNG)
 
