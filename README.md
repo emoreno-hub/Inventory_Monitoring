@@ -45,10 +45,10 @@ This methodology ensures a structured approach to data processing, model trainin
 
 ## Dataset
 
-### Overview
+#### Overview
 The dataset used for this project will be the [Amazon Bin Image Dataset](https://registry.opendata.aws/amazon-bin-imagery/), which consists of 500,000 images of bins containing one or more objects from Amazon Fulfillment Centers.  Each image is in JPEG format and contains corresponding JSON metadata files which describe the items in each bins.  
 
-### Access
+#### Access
 Running the `sagemaker.ipynb` notebook will allow you to download a subset of data.  The subset is controlled by the file titled `file_list.json` and reuslts in 10,441 images being downloaded for this project.
 
 ## Model Training
