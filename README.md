@@ -133,6 +133,9 @@ After hyperparameter tuning concluded, the optimal hyperparameters found were:
 
 A moodel was then trained using these hyperparameters using `ml.g4dn.xlarge` for the instance type.
 
+#### SageMaker Debugger and Profiler
+The SageMaker Debugger was used for debugging by adding hooks to the train and test models and then registering the models along with registering the loss function. SageMaker Profiler was used to check how well the model training was performing and to analyze the instance resource and GPU/CPU utilization.
+
 ## Results
 #### Model Evaluation and Validation
 By instantiating a pre-trained ResNet50 model with the optimal parameters found from hyper parameter tuning, accuracy for this model was 30%, which is lower than the benchmark of 55.67%.  It could be the case that the model had too many fully connected layers at the end of the model.
