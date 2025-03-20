@@ -130,8 +130,9 @@ After hyperparameter tuning concluded, the optimal hyperparameters found were:
 
 A moodel was then trained using these hyperparameters using `ml.g4dn.xlarge` for the instance type.
 
-#### Model Evaluation
-By instantiating a pre-trained ResNet50 model with the optimal parameters found from hyper parameter tuning, accuracy for this model was 30%, which is lower than the benchmark of 55.67%.  It could be the case that I added too many fully connected layers at the end of the model, which I will explore down the road.
+## Results
+#### Model Evaluation and Validation
+By instantiating a pre-trained ResNet50 model with the optimal parameters found from hyper parameter tuning, accuracy for this model was 30%, which is lower than the benchmark of 55.67%.  It could be the case that the model had too many fully connected layers at the end of the model.
 
 ![](https://github.com/emoreno-hub/Inventory_Monitoring_Project/blob/main/screenshots/Model_performance.PNG)
 
