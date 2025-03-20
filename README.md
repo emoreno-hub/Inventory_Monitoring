@@ -51,6 +51,9 @@ The dataset used for this project will be the [Amazon Bin Image Dataset](https:/
 #### Access
 Running the `sagemaker.ipynb` notebook will allow you to download a subset of data.  The subset is controlled by the file titled `file_list.json` and reuslts in 10,441 images being downloaded for this project.
 
+#### S3 Bucket Structure
+![](https://github.com/emoreno-hub/Inventory_Monitoring/blob/main/screenshots/S3_bucket.PNG)
+
 ## Model Training
 
 #### CNN Model
