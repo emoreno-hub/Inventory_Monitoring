@@ -8,6 +8,38 @@ In this project we use a Convolutional Neural Network that relies on a pre-train
 - Clone this repository
 - Run `sagemaker.ipnyb`
 
+## Methodology
+This section outlines the workflow for the project, from data preparation to model deployment.
+
+### **1. Data Preparation**
+- Download data and store it in an **S3 bucket**.
+- Split training data into **train, test, and validation** sets.
+
+### **2. Exploratory Data Analysis (EDA)**
+- Explore the **distribution of classes** in the dataset.
+- Identify and address any **class imbalance**.
+
+### **3. Model Training**
+- Develop a training script for **data pre-processing** and **hyperparameter tuning**.
+- Load a **pre-trained ResNet50 model** as the base architecture.
+- Perform **data augmentation** on the training set.
+- Tune hyperparameters, focusing on:
+  - **Learning rate**
+  - **Batch size**
+- Set up a **training estimator** for model training.
+
+### **4. Model Evaluation**
+- Evaluate model performance using:
+  - **Accuracy**
+  - **Root Mean Squared Error (RMSE)**
+
+### **5. Deployment**
+- Deploy the trained model to an **endpoint**.
+- Create a **Lambda function** that connects to the endpoint and makes inferences using a test image.
+
+This methodology ensures a structured approach to data processing, model training, and deployment.
+
+
 ## Dataset
 
 ### Overview
